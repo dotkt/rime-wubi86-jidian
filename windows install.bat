@@ -1,0 +1,1 @@
+copy *.* C:\Users\holiday_life\AppData\Roaming\Rime\  /Y
