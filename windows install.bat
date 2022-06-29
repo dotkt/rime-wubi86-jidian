@@ -1,1 +1,1 @@
-copy *.* C:\Users\holiday_life\AppData\Roaming\Rime\  /Y
+copy D:\projects\rime-wubi86-jidian\*.* C:\Users\holiday_life\AppData\Roaming\Rime\  /Y
