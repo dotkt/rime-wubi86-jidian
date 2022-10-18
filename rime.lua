@@ -74,6 +74,16 @@ function date_translator(input, seg)
         -- 🛫 2022-10-12 
     end
 
+    -- 输入日期
+    if (input == "todo") then
+        --- Candidate(type, start, end, text, comment)
+        yield(Candidate("todo", seg.start, seg._end, os.date("- [ ] #todo "), ""))
+        yield(Candidate("todo", seg.start, seg._end, os.date("🛫 %Y-%m-%d 📅 %Y-%m-%d  "), ""))
+        yield(Candidate("todo", seg.start, seg._end, os.date("- [ ] #todo 🛫 %Y-%m-%d 📅 %Y-%m-%d  "), ""))
+        -- 📅 2022-10-06
+        -- 🛫 2022-10-12 
+    end
+
     -- 输入时间
     if (input == "time") then
         --- Candidate(type, start, end, text, comment)
