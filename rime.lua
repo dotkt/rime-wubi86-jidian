@@ -78,6 +78,7 @@ function date_translator(input, seg)
     if (input == "todo") then
         --- Candidate(type, start, end, text, comment)
         yield(Candidate("todo", seg.start, seg._end, os.date("- [ ] #todo "), ""))
+        yield(Candidate("todo", seg.start, seg._end, os.date("#todo "), ""))
         yield(Candidate("todo", seg.start, seg._end, os.date("🛫 %Y-%m-%d 📅 %Y-%m-%d  "), ""))
         yield(Candidate("todo", seg.start, seg._end, os.date("- [ ] #todo 🛫 %Y-%m-%d 📅 %Y-%m-%d  "), ""))
         -- 📅 2022-10-06
