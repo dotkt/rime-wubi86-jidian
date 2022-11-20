@@ -90,12 +90,16 @@ function date_translator(input, seg)
     if (input == "time") then
         --- Candidate(type, start, end, text, comment)
 		yield(Candidate("date", seg.start, seg._end, os.date("%Y-%m-%d %H:%M:%S"), ""))
-        yield(Candidate("date", seg.start, seg._end, os.date("%Y-%m-%d %H-%M-%S"), ""))
+--        yield(Candidate("date", seg.start, seg._end, os.date("git tag %Y-%m-%d_%H-%M-%S"), ""))
         yield(Candidate("time", seg.start, seg._end, os.date("%H:%M"), ""))
         yield(Candidate("time", seg.start, seg._end, os.date("%Y%m%d%H%M%S"), ""))
         yield(Candidate("time", seg.start, seg._end, os.date("%H:%M:%S"), ""))
     end
 
+    if (input == "tag") then
+        --- Candidate(type, start, end, text, comment)
+        yield(Candidate("date", seg.start, seg._end, os.date("git tag %Y-%m-%d_%H-%M-%S"), ""))
+    end
     -- 输入星期
     -- -- @JiandanDream
     -- -- https://github.com/KyleBing/rime-wubi86-jidian/issues/54
