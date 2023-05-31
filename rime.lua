@@ -38,11 +38,8 @@ function fk(input, seg)
         yield(Candidate("t", seg.start, seg._end, "#开心\r", ""))
         yield(Candidate("t", seg.start, seg._end, "#升级装备\r", ""))
         yield(Candidate("t", seg.start, seg._end, "#目标失败分析\r", ""))
-    end
-
-    if input == "fz" then
-        yield(Candidate("fz", seg.start, seg._end, os.date("\r\r\r# %Y%m%d%H%M%S"), "多行分组"))
-        yield(Candidate("fz", seg.start, seg._end, os.date("# %Y%m%d%H%M%S"), "本行分组"))
+        yield(Candidate("t", seg.start, seg._end, os.date("\r\r\r# %Y%m%d%H%M%S"), "多行分组"))
+        yield(Candidate("t", seg.start, seg._end, os.date("# %Y%m%d%H%M%S"), "本行分组"))
     end
     
     if string.match(input, "^fz(.*)") then
