@@ -86,6 +86,13 @@ function date_translator(input, seg)
         -- 🛫 2022-10-12 
     end
 
+
+    -- 输入日期
+    if (input == "fz") then
+        --- Candidate(type, start, end, text, comment)
+        yield(Candidate("fz", seg.start, seg._end, os.date("# %Y%m%d%H%M%S"), ""))
+    end
+
     -- 输入时间
     if (input == "time") then
         --- Candidate(type, start, end, text, comment)
@@ -93,6 +100,7 @@ function date_translator(input, seg)
 --        yield(Candidate("date", seg.start, seg._end, os.date("git tag %Y-%m-%d_%H-%M-%S"), ""))
         yield(Candidate("time", seg.start, seg._end, os.date("%H:%M"), ""))
         yield(Candidate("time", seg.start, seg._end, os.date("%Y%m%d%H%M%S"), ""))
+        --yield(Candidate("time", seg.start, seg._end, os.date("# %Y%m%d%H%M%S"), ""))
         yield(Candidate("time", seg.start, seg._end, os.date("%H:%M:%S"), ""))
     end
 
