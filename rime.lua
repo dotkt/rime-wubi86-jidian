@@ -33,6 +33,19 @@ function calculator(input, seg)
 end
 
 
+function fk(input, seg)
+    if input == "fz" then
+        yield(Candidate("fz", seg.start, seg._end, os.date("\r\r\r# %Y%m%d%H%M%S"), "多行分组"))
+        yield(Candidate("fz", seg.start, seg._end, os.date("# %Y%m%d%H%M%S"), "本行分组"))
+    end
+    
+    if string.match(input, "^fz(.*)") then
+        local content = string.match(input, "^fz(.*)")
+        yield(Candidate("fz", seg.start, seg._end, "# " .. content, "人工分组名"))
+    end
+end
+
+
 function date_translator(input, seg)
 
     -- 日期格式说明：
@@ -84,13 +97,6 @@ function date_translator(input, seg)
         yield(Candidate("todo", seg.start, seg._end, os.date("- [ ] #todo 🛫 %Y-%m-%d 📅 %Y-%m-%d  "), ""))
         -- 📅 2022-10-06
         -- 🛫 2022-10-12 
-    end
-
-
-    -- 输入日期
-    if (input == "fz") then
-        --- Candidate(type, start, end, text, comment)
-        yield(Candidate("fz", seg.start, seg._end, os.date("# %Y%m%d%H%M%S"), ""))
     end
 
     -- 输入时间
