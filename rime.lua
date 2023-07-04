@@ -36,10 +36,18 @@ end
 function fk(input, seg)
     if input == "t" then
         yield(Candidate("t", seg.start, seg._end, "#开心\r", ""))
-        yield(Candidate("t", seg.start, seg._end, "#升级装备\r", ""))
-        yield(Candidate("t", seg.start, seg._end, "#目标失败分析\r", ""))
-        yield(Candidate("t", seg.start, seg._end, os.date("\r\r\r# %Y%m%d%H%M%S"), "多行分组"))
-        yield(Candidate("t", seg.start, seg._end, os.date("# %Y%m%d%H%M%S"), "本行分组"))
+        yield(Candidate("t", seg.start, seg._end, os.date("\r\r# %Y%m%d%H%M%S\r- [ ] #todo "), "添加待办事项"))
+        local today = os.date("%Y-%m-%d")
+        yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..today, "1天"))
+        local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60)
+        yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..tomorrow, "2天"))
+        local this_weekend = os.date("%Y-%m-%d", os.time() + 2 * 24 * 60 * 60)
+        yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..this_weekend, "3天"))
+
+        local next_sunday = os.date("%Y-%m-%d", os.time() + 7 * 24 * 60 * 60)
+        yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..next_sunday, "1周"))
+        local next_month = os.date("%Y-%m-%d", os.time() + 30 * 24 * 60 * 60)
+        yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..next_month, "1月"))
     end
     
     if string.match(input, "^fz(.*)") then
