@@ -45,6 +45,9 @@ function fk(input, seg)
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..tomorrow, "2天完成"))
         yield(Candidate("t",seg.start,seg._end,"\r#失败原因分析 \r#动机 :\r#提示 :\r#能力 (时间、体能、精力):","福格的行为模型"))
     end
+    if input == "tlxgc" then
+        yield(Candidate("tlxgc", seg.start, seg._end, "#练习观察\r", ""))
+    end
     if string.match(input, "^fz(.*)") then
         local content = string.match(input, "^fz(.*)")
         yield(Candidate("fz", seg.start, seg._end, "# " .. content, "人工分组名"))
