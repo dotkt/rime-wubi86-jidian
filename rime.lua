@@ -38,15 +38,15 @@ function fk(input, seg)
         yield(Candidate("t", seg.start, seg._end, "#开心\r", ""))
         yield(Candidate("t", seg.start, seg._end, "#升级装备\r", ""))
         yield(Candidate("t", seg.start, seg._end, "#情绪管理\r", ""))
-        yield(Candidate("t", seg.start, seg._end, os.date("\r\r- [ ] #todo "), "添加待办事项"))
+        yield(Candidate("t", seg.start, seg._end, os.date("- [ ] #todo "), "添加待办事项"))
         local today = os.date("%Y-%m-%d")
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..today, "1天完成"))
         local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60)
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..tomorrow, "2天完成"))
         yield(Candidate("t",seg.start,seg._end,"\r#失败原因分析 \r#动机 :\r#提示 :\r#能力 (时间、体能、精力):","福格的行为模型"))
     end
-    if input == "tlxgc" then
-        yield(Candidate("tlxgc", seg.start, seg._end, "#练习观察\r", ""))
+    if input == "tgc" then
+        yield(Candidate("gc", seg.start, seg._end, "#练习观察\r", ""))
     end
     if string.match(input, "^fz(.*)") then
         local content = string.match(input, "^fz(.*)")
