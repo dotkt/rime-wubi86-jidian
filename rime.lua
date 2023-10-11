@@ -51,7 +51,7 @@ function fk(input, seg)
         yield(Candidate("tz", seg.start, seg._end, "#现状 :\r#目标 :\r#路径 :\r", "规划目标路径"))
         local today = os.date("%Y-%m-%d")
         local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60)
-        yield(Candidate("tz", seg.start, seg._end, "- [ ] #todo #目标 ".."🛫 "..today.." 📅 "..tomorrow, "设定小目标"))
+        yield(Candidate("tz", seg.start, seg._end, "- [ ] #todo #目标 ", "设定小目标"))
     end
     if string.match(input, "^fz(.*)") then
         local content = string.match(input, "^fz(.*)")
