@@ -52,6 +52,8 @@ function fk(input, seg)
         local today = os.date("%Y-%m-%d")
         local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60)
         yield(Candidate("tz", seg.start, seg._end, "- [ ] #todo #目标 ", "设定小目标"))
+        local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60 * 364)
+        yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..tomorrow, "想做的事"))
     end
     if string.match(input, "^fz(.*)") then
         local content = string.match(input, "^fz(.*)")
