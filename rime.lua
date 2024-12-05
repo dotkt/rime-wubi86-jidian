@@ -34,11 +34,11 @@ end
 
 
 
-function fk(input, seg)
+function fk(input, seg)    
     if input == "t" then
-        yield(Candidate("t", seg.start, seg._end, "#开心\r", ""))
-        yield(Candidate("t", seg.start, seg._end, "#升级装备\r", ""))
-        yield(Candidate("t", seg.start, seg._end, "#情绪管理\r", ""))
+        yield(Candidate("t", seg.start, seg._end, "#开心 ", ""))
+        yield(Candidate("t", seg.start, seg._end, "#升级装备 ", ""))
+        yield(Candidate("t", seg.start, seg._end, "#情绪管理 ", ""))
         yield(Candidate("t", seg.start, seg._end, os.date("- [ ] #todo "), "添加待办事项"))
         local today = os.date("%Y-%m-%d")
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..today, "1天完成"))
