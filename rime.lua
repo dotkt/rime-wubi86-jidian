@@ -44,14 +44,14 @@ function fk(input, seg)
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..today, "1天完成"))
         local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60)
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..tomorrow, "2天完成"))
-        yield(Candidate("t",seg.start,seg._end,"\r#失败原因分析 \r#动机 :\r#提示 :\r#能力 (时间、体能、精力):","福格的行为模型"))
+        --yield(Candidate("t",seg.start,seg._end,"\r#失败原因分析 \r#动机 :\r#提示 :\r#能力 (时间、体能、精力):","福格的行为模型"))
     end
     if input == "tz" then
         yield(Candidate("tz", seg.start, seg._end, "#练习观察\r", ""))
-        yield(Candidate("tz", seg.start, seg._end, "#现状 :\r#目标 :\r#路径 :\r", "规划目标路径"))
+        --yield(Candidate("tz", seg.start, seg._end, "#现状 :\r#目标 :\r#路径 :\r", "规划目标路径"))
         local today = os.date("%Y-%m-%d")
         local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60)
-        yield(Candidate("tz", seg.start, seg._end, "- [ ] #todo #目标 ", "设定小目标"))
+        --yield(Candidate("tz", seg.start, seg._end, "- [ ] #todo #目标 ", "设定小目标"))
         local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60 * 364)
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..tomorrow, "想做的事"))
     end
