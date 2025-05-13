@@ -36,14 +36,28 @@ end
 
 function fk(input, seg)    
     if input == "t" then
-        yield(Candidate("t", seg.start, seg._end, "#开心 ", ""))
-        yield(Candidate("t", seg.start, seg._end, "#升级装备 ", ""))
-        yield(Candidate("t", seg.start, seg._end, "#情绪管理 ", ""))
+        -- yield(Candidate("t", seg.start, seg._end, "#开心 ", ""))
+        -- yield(Candidate("t", seg.start, seg._end, "#升级装备 ", ""))
+        -- yield(Candidate("t", seg.start, seg._end, "#情绪管理 ", ""))
         yield(Candidate("t", seg.start, seg._end, os.date("- [ ] #todo "), "添加待办事项"))
         local today = os.date("%Y-%m-%d")
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..today, "1天完成"))
         local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60)
         yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..tomorrow, "2天完成"))
+        
+        -- 计算本周日
+        local current_time = os.time()
+        local current_weekday = tonumber(os.date("%w", current_time))
+        local days_to_sunday = 7 - current_weekday
+        local sunday = os.date("%Y-%m-%d", current_time + days_to_sunday * 24 * 60 * 60)
+        yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..sunday, "本周完成"))
+        
+        -- 计算本月最后一天
+        local year = tonumber(os.date("%Y", current_time))
+        local month = tonumber(os.date("%m", current_time))
+        local last_day = os.date("%d", os.time({year=year, month=month+1, day=0}))
+        local last_day_of_month = string.format("%04d-%02d-%02d", year, month, last_day)
+        yield(Candidate("t", seg.start, seg._end, "🛫 "..today.." 📅 "..last_day_of_month, "本月完成"))
         --yield(Candidate("t",seg.start,seg._end,"\r#失败原因分析 \r#动机 :\r#提示 :\r#能力 (时间、体能、精力):","福格的行为模型"))
     end
     if input == "tz" then
