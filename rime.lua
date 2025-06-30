@@ -125,8 +125,7 @@ function date_translator(input, seg)
         yield(Candidate("todo", seg.start, seg._end, os.date("🛫 %Y-%m-%d 📅 %Y-%m-%d  "), ""))
         yield(Candidate("todo", seg.start, seg._end, os.date("- [ ] "), ""))
         yield(Candidate("todo", seg.start, seg._end, os.date("- [ ] #todo 🛫 %Y-%m-%d 📅 %Y-%m-%d  "), ""))
-        -- 📅 2022-10-06
-        -- 🛫 2022-10-12 
+        yield(Candidate("todo", seg.start, seg._end, os.date("#%Y年%m目标 "), ""))
     end
 
     -- 输入时间
