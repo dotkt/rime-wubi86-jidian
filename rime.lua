@@ -137,6 +137,8 @@ function date_translator(input, seg)
         yield(Candidate("time", seg.start, seg._end, os.date("%Y%m%d%H%M%S"), ""))
         --yield(Candidate("time", seg.start, seg._end, os.date("# %Y%m%d%H%M%S"), ""))
         yield(Candidate("time", seg.start, seg._end, os.date("%H:%M:%S"), ""))
+        --compress_video_20251010_111421
+        yield(Candidate("time", seg.start, seg._end, os.date("compress_video_%Y%m%d_%H%M%S.mp4"), ""))
     end
 
     if (input == "tag") then
